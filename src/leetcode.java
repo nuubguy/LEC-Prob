@@ -7,6 +7,7 @@ import java.util.List;
 public class leetcode {
 
     //longest common subsequence
+    //complexity will be 2pow(n)
     static int longestCommonSubsequence(String firstWord,String secondWord, int firstWordLength, int secondWordLength){
         if(firstWordLength ==0 || secondWordLength ==0){
             return 0;
@@ -19,6 +20,7 @@ public class leetcode {
     }
 
     //longest increasing
+    //complexity will be 2pow(n)
     static int longestIncreasing(int []nums,int firstPointer,int secondPointer) {
         if(secondPointer==nums.length){
             return 0;
