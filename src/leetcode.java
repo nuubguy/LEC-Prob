@@ -37,26 +37,36 @@ public class leetcode {
     //min path in triangle
     //loop all value of the array in every row
 
-    static int minimumTotal(List<List<Integer>> triangle, int count,int row) {
+    static int minimumTotal(Integer [][]triangle) {
+        Integer [][] result = triangle.clone();
+        int count = Integer.MAX_VALUE;
 
-        if(triangle.size()==0){
-            return triangle.get(0).get(0);
+        if(triangle.length==1){
+            return triangle[0][0];
         }
 
-        if(row == triangle.size()){
-            return count;
-        }
+        for(int x=1;x<triangle.length;x++){
+            if (x==triangle.length-1){
 
-        int o=Integer.MAX_VALUE;
+            }
+            for(int z=0;z<triangle[x].length;z++){
 
-        for(int x=0;x<triangle.get(row).size();x++){
-            int result = minimumTotal(triangle,count + triangle.get(row).get(x),row+1);
-
-            if(result<o){
-                o = result;
+                if(z==0){
+                    result[x][z]=triangle[x-1][0] + triangle[x][z];
+                }else if(z==triangle[x].length-1){
+                    result[x][z]=triangle[x-1][triangle[x-1].length-1]+triangle[x][z];
+                }else{
+                    result[x][z] = Math.min(triangle[x-1][z-1] + triangle[x][z],triangle[x-1][z] + triangle[x][z]);
+                }
+                if(result[x][z]<count && x== triangle.length-1){
+                    count = result[x][z];
+                }
             }
         }
-        return o;
+
+            System.out.println(Arrays.deepToString(result));
+        return count;
+
     }
 
     public static void main(String [] args){
@@ -69,14 +79,45 @@ public class leetcode {
 //        int [] sequence= new int []{1,8,7};
 //        System.out.println(longestIncreasing(sequence,Integer.MIN_VALUE,0));
 
+
+
         //test for shortest path in triangle
         List<List<Integer>> triangle = new ArrayList<>();
         triangle.add(Arrays.asList(new Integer []{-1}));
-        triangle.add(Arrays.asList(new Integer []{-2,-3}));
+        triangle.add(Arrays.asList(new Integer []{2,3}));
+        triangle.add(Arrays.asList(new Integer []{1,-1,-3}));
+
+        Integer[][] finalData = triangle.stream()
+                .map(arr -> arr.toArray(Integer[]::new))
+                .toArray(Integer[][]::new);
+
+
+        triangle.add(Arrays.asList(new Integer []{    2}));
+        triangle.add(Arrays.asList(new Integer []{   3, 4}));
+        triangle.add(Arrays.asList(new Integer []{ 6, 5, 7}));
+        triangle.add(Arrays.asList(new Integer []{4, 1, 8, 3}));
+
+        System.out.println(minimumTotal(finalData));
+
+
+        /*
+                        {2}
+                       {3,4}
+                      {6,5,7}
+                     {4,2,8,3}
+
+                        {2}
+                       {5,6}
+                      {11,10,13}
+                     {15,12,18,-2}
+         */
+
+
+
 //        triangle.add(Arrays.asList(new Integer []{6,5,7}));
 //        triangle.add(Arrays.asList(new Integer []{4,1,8,3}));
 
-        System.out.println(minimumTotal(triangle,0,0));
+//        System.out.println(minimumTotal(triangle,0,0));
 
 
 
