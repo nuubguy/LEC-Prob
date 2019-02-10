@@ -1,7 +1,7 @@
-import java.awt.font.NumericShaper;
-import java.util.ArrayList;
+import com.sun.deploy.ref.Helpers;
+
+import javax.sound.midi.Soundbank;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class leetcode {
@@ -34,13 +34,12 @@ public class leetcode {
         }
     }
 
-
+    //minimum step in triangle
     static int minimumTotal(List<List<Integer>>triangle){
         int count = Integer.MAX_VALUE;
         if(triangle.size()==1){
             return triangle.get(0).get(0);
         }
-
         for(int x=1;x<triangle.size();x++){
             for (int z=0;z<triangle.get(x).size();z++){
                 if(z==0){
@@ -58,6 +57,45 @@ public class leetcode {
         }
         return count;
     }
+
+    //count island
+    static int numIslands(char[][] grid) {
+
+        int count =0;
+
+        for(int x=0;x<grid.length;x++){
+            for(int z=0;z<grid[x].length;z++){
+                if(grid[x][z]=='1'){
+                    count++;
+                   helperNumIsland(grid,x,z);
+
+                    System.out.println(Arrays.deepToString(grid));
+                }
+            }
+        }
+        return count;
+    }
+
+    static void helperNumIsland(char[][]grid, int x, int y){
+
+        if (x<0 || y<0 ||x== grid.length|| y == grid[0].length ||grid[x][y]=='0'){
+            return;
+        }
+
+        if(grid[x][y]=='1'){
+            grid[x][y] = 'x';
+        }else{
+            return;
+        }
+        System.out.println(Arrays.deepToString(grid));
+
+        helperNumIsland(grid,x+1,y);
+        helperNumIsland(grid,x-1,y);
+        helperNumIsland(grid,x,y+1);
+        helperNumIsland(grid,x,y-1);
+    }
+
+
 
     public static void main(String [] args){
         //test for longestCommonSubsequencce
@@ -80,8 +118,12 @@ public class leetcode {
 //
 //        System.out.println(minimumTotal(triangle));
 
+        //tes to count island
+        char [][]board = new char[][]{
+                {'0','0','0','0','0'}
 
-
+        };
+        System.out.println(numIslands(board));
 
 
     }
