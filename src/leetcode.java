@@ -34,39 +34,29 @@ public class leetcode {
         }
     }
 
-    //min path in triangle
-    //loop all value of the array in every row
 
-    static int minimumTotal(Integer [][]triangle) {
-        Integer [][] result = triangle.clone();
+    static int minimumTotal(List<List<Integer>>triangle){
         int count = Integer.MAX_VALUE;
-
-        if(triangle.length==1){
-            return triangle[0][0];
+        if(triangle.size()==1){
+            return triangle.get(0).get(0);
         }
 
-        for(int x=1;x<triangle.length;x++){
-            if (x==triangle.length-1){
-
-            }
-            for(int z=0;z<triangle[x].length;z++){
-
+        for(int x=1;x<triangle.size();x++){
+            for (int z=0;z<triangle.get(x).size();z++){
                 if(z==0){
-                    result[x][z]=triangle[x-1][0] + triangle[x][z];
-                }else if(z==triangle[x].length-1){
-                    result[x][z]=triangle[x-1][triangle[x-1].length-1]+triangle[x][z];
+                    triangle.get(x).set(z,triangle.get(x-1).get(0)+triangle.get(x).get(z));
+                }else if(z==triangle.get(x).size()-1){
+                    triangle.get(x).set(z,triangle.get(x-1).get(triangle.get(x-1).size()-1) + triangle.get(x).get(z));
                 }else{
-                    result[x][z] = Math.min(triangle[x-1][z-1] + triangle[x][z],triangle[x-1][z] + triangle[x][z]);
+                    triangle.get(x).set(z, Math.min(triangle.get(x-1).get(z-1)+ triangle.get(x).get(z),triangle.get(x-1).get(z)+ triangle.get(x).get(z)));
                 }
-                if(result[x][z]<count && x== triangle.length-1){
-                    count = result[x][z];
+
+                if(triangle.get(x).get(z)<count && x==triangle.size()-1){
+                    count = triangle.get(x).get(z);
                 }
             }
         }
-
-            System.out.println(Arrays.deepToString(result));
         return count;
-
     }
 
     public static void main(String [] args){
@@ -82,42 +72,14 @@ public class leetcode {
 
 
         //test for shortest path in triangle
-        List<List<Integer>> triangle = new ArrayList<>();
-        triangle.add(Arrays.asList(new Integer []{-1}));
-        triangle.add(Arrays.asList(new Integer []{2,3}));
-        triangle.add(Arrays.asList(new Integer []{1,-1,-3}));
+//        List<List<Integer>> triangle = new ArrayList<>();
+//        triangle.add(Arrays.asList(new Integer []{    2}));
+//        triangle.add(Arrays.asList(new Integer []{   3, 4}));
+//        triangle.add(Arrays.asList(new Integer []{ 6, 5, 7}));
+//        triangle.add(Arrays.asList(new Integer []{4, 1, 8, 3}));
+//
+//        System.out.println(minimumTotal(triangle));
 
-        Integer[][] finalData = triangle.stream()
-                .map(arr -> arr.toArray(Integer[]::new))
-                .toArray(Integer[][]::new);
-
-
-        triangle.add(Arrays.asList(new Integer []{    2}));
-        triangle.add(Arrays.asList(new Integer []{   3, 4}));
-        triangle.add(Arrays.asList(new Integer []{ 6, 5, 7}));
-        triangle.add(Arrays.asList(new Integer []{4, 1, 8, 3}));
-
-        System.out.println(minimumTotal(finalData));
-
-
-        /*
-                        {2}
-                       {3,4}
-                      {6,5,7}
-                     {4,2,8,3}
-
-                        {2}
-                       {5,6}
-                      {11,10,13}
-                     {15,12,18,-2}
-         */
-
-
-
-//        triangle.add(Arrays.asList(new Integer []{6,5,7}));
-//        triangle.add(Arrays.asList(new Integer []{4,1,8,3}));
-
-//        System.out.println(minimumTotal(triangle,0,0));
 
 
 
