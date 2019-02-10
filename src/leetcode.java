@@ -35,13 +35,28 @@ public class leetcode {
     }
 
     //min path in triangle
-    static int minimumTotal(List<List<Integer>> triangle) {
-        int count = 0;
-        for(int x=0;x<triangle.size();x++){
-            Collections.sort(triangle.get(x));
-            count+=triangle.get(x).get(0);
+    //loop all value of the array in every row
+
+    static int minimumTotal(List<List<Integer>> triangle, int count,int row) {
+
+        if(triangle.size()==0){
+            return triangle.get(0).get(0);
         }
-        return count;
+
+        if(row == triangle.size()){
+            return count;
+        }
+
+        int o=Integer.MAX_VALUE;
+
+        for(int x=0;x<triangle.get(row).size();x++){
+            int result = minimumTotal(triangle,count + triangle.get(row).get(x),row+1);
+
+            if(result<o){
+                o = result;
+            }
+        }
+        return o;
     }
 
     public static void main(String [] args){
@@ -56,12 +71,12 @@ public class leetcode {
 
         //test for shortest path in triangle
         List<List<Integer>> triangle = new ArrayList<>();
-        triangle.add(Arrays.asList(new Integer []{2}));
-        triangle.add(Arrays.asList(new Integer []{3,4}));
-        triangle.add(Arrays.asList(new Integer []{6,5,7}));
-        triangle.add(Arrays.asList(new Integer []{4,1,8,3}));
+        triangle.add(Arrays.asList(new Integer []{-1}));
+        triangle.add(Arrays.asList(new Integer []{-2,-3}));
+//        triangle.add(Arrays.asList(new Integer []{6,5,7}));
+//        triangle.add(Arrays.asList(new Integer []{4,1,8,3}));
 
-        System.out.println(minimumTotal(triangle));
+        System.out.println(minimumTotal(triangle,0,0));
 
 
 
