@@ -116,18 +116,23 @@ public class leetcode {
 
     static boolean helperWordSearch(char[][] board, String word, int pointer, int x, int y) {
 
-        if (x == board.length || x < 0 || y == board[0].length || y < 0 || board[x][y] != word.charAt(pointer)) {
-            return false;
-        } else if (pointer == word.length() - 1 && board[x][y] == word.charAt(pointer)) {
+        if (pointer== word.length()){
             return true;
         }
 
-        board[x][y] = '1';
-        boolean top = helperWordSearch(board, word, pointer + 1, x - 1, y);
-        boolean bot = helperWordSearch(board, word, pointer + 1, x + 1, y);
-        boolean right = helperWordSearch(board, word, pointer + 1, x, y + 1);
-        boolean left = helperWordSearch(board, word, pointer + 1, x, y - 1);
-        boolean result = top || bot || right || left;
+        if (x == board.length || x < 0 || y == board[0].length || y < 0 ) {
+            return false;
+        }
+        if (board[x][y]!= word.charAt(pointer)){
+            return false;
+        }
+
+        board[x][y] ^=256;
+
+        boolean result = (helperWordSearch(board, word, pointer + 1, x, y + 1)||helperWordSearch(board, word, pointer + 1, x, y - 1)||
+                helperWordSearch(board, word, pointer + 1, x - 1, y)||helperWordSearch(board, word, pointer + 1, x + 1, y));
+
+        board[x][y] ^= 256;
         return result;
 
     }
@@ -163,12 +168,18 @@ public class leetcode {
         System.out.println(numIslands(board));*/
 
 //        test word word search
-        char[][] board = new char[][]{
-                {'A', 'B', 'C', 'E'},
-                {'S', 'F', 'C', 'S'},
-                {'A', 'D', 'E', 'E'},
-        };
-        System.out.println(exist(board, "ABCB"));
+//        char[][] board = new char[][]{
+//                {'C','A','A'},
+//                {'A','A','A'},
+//                {'B', 'C', 'D'},
+//        };
+
+//        char[][] board = new char[][]{
+//                {'A','B','C','E'},
+//                {'S','F','C','S'},
+//                {'A', 'D', 'E','E'},
+//        };
+//        System.out.println(exist(board, "ABCCED"));
 
 
     }
