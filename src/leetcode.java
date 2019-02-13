@@ -217,6 +217,23 @@ public class leetcode {
                 helperSolution(splitted,index+1,K,splitted[index],sms+1));
     }
 
+    static int stringSubFixes(String word){
+        int count =0;
+
+        for(int x=0;x<word.length();x++){
+            String temp = word.substring(x,word.length());
+            for (int z=0;z<temp.length();z++){
+                if (word.charAt(z)== temp.charAt(z)){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+        }
+    return count;
+    }
+
+
 
     public static void main(String[] args) {
 /*        test for longestCommonSubsequencce
@@ -261,10 +278,15 @@ public class leetcode {
         };
         System.out.println(exist(board, "ABCCED"));*/
 
-        //array part
-//        System.out.println(powerOfTwo(8));
-//        System.out.println(solution("SMS SMS SMS",3));
-        System.out.println(solution("SMS MESSAGESOIKL ARE REALLY SHORT",12));
-;
+/*        SMS
+        System.out.println(powerOfTwo(8));
+        System.out.println(solution("SMS SMS SMS",3));
+        System.out.println(solution("SMS MESSAGESOIKL ARE REALLY SHORT",12));*/
+
+/*
+    string subfixes
+        System.out.println(stringSubFixes("aa"));
+*/
+
     }
 }
