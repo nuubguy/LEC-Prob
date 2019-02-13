@@ -1,8 +1,8 @@
 import com.sun.deploy.ref.Helpers;
 
 import javax.sound.midi.Soundbank;
-import java.util.Arrays;
-import java.util.List;
+import java.sql.SQLOutput;
+import java.util.*;
 
 public class leetcode {
 
@@ -82,7 +82,6 @@ public class leetcode {
         if (x < 0 || y < 0 || x == grid.length || y == grid[0].length || grid[x][y] == '0') {
             return;
         }
-
         if (grid[x][y] == '1') {
             grid[x][y] = 'x';
         } else {
@@ -110,7 +109,6 @@ public class leetcode {
                 }
             }
         }
-
         return result;
     }
 
@@ -127,7 +125,7 @@ public class leetcode {
             return false;
         }
 
-        board[x][y] ^=256;
+        board[x][y] ^=256;//--> wtf is this
 
         boolean result = (helperWordSearch(board, word, pointer + 1, x, y + 1)||helperWordSearch(board, word, pointer + 1, x, y - 1)||
                 helperWordSearch(board, word, pointer + 1, x - 1, y)||helperWordSearch(board, word, pointer + 1, x + 1, y));
@@ -135,6 +133,88 @@ public class leetcode {
         board[x][y] ^= 256;
         return result;
 
+    }
+
+    static boolean powerOfTwo(int n){
+        if (n==1){
+            return true;
+        }
+
+        if (n%2!=0){
+            return false;
+        }
+
+        return powerOfTwo(n/2);
+    }
+
+
+    static int arrayPartition(int [] nums){
+        if (nums.length ==0){
+            return 0;
+        }
+        Arrays.sort(nums);
+        int count =0;
+        for(int x=1;x<nums.length;x+=2){
+            count += Math.min(nums[x],nums[x-1]);
+        }
+        return count;
+    }
+
+//    static int longestPalindrome(String word){
+//        HashMap<Character,Integer> result = new HashMap<>();
+//        int count = 0;
+//        for(int x=0;x<word.length();x++){
+//            if (result.get(word.charAt(x))!=null){
+//                result.put(word.charAt(x),1);
+//            }else{
+//                result.replace(word.charAt(x),result.get(word.charAt(x)+1));
+//            }
+//        }
+//
+//        Iterator map = result.entrySet().iterator();
+//        boolean one = false;
+//        while (map.hasNext()){
+//
+//            Map.Entry pair = (Map.Entry)map.next();
+//            if((int)pair.getValue()==1 && one == false){
+//                count+=(int)pair.getValue();
+//                one = true;
+//            }
+//            if ((int)pair.getValue()%2 ==1){
+//
+//            }
+//
+//        }
+//
+//
+//
+//    }
+
+    static int solution(String S, int K) {
+        String [] splitted = S.split("\\s+");
+
+
+
+        return helperSolution(splitted,0,K,"",0);
+
+    }
+
+    static int helperSolution(String[]splitted,int index, int K,String stringsan,int sms){
+
+        if (stringsan.length()-1>K){
+            return helperSolution(splitted,index-1,K, "",sms+1);
+        }
+
+        if (stringsan.length()-1==K){
+            return helperSolution(splitted,index,K,"",sms+1);
+        }
+
+        if (index == splitted.length){
+            return sms+1;
+        }
+
+        return Math.min(helperSolution(splitted,index+1,K,stringsan+splitted[index]+" ",sms),
+                helperSolution(splitted,index+1,K,splitted[index],sms+1));
     }
 
 
@@ -167,20 +247,24 @@ public class leetcode {
         };
         System.out.println(numIslands(board));*/
 
-//        test word word search
-//        char[][] board = new char[][]{
-//                {'C','A','A'},
-//                {'A','A','A'},
-//                {'B', 'C', 'D'},
-//        };
+/*        test word word search
+        char[][] board = new char[][]{
+                {'C','A','A'},
+                {'A','A','A'},
+                {'B', 'C', 'D'},
+        };
 
-//        char[][] board = new char[][]{
-//                {'A','B','C','E'},
-//                {'S','F','C','S'},
-//                {'A', 'D', 'E','E'},
-//        };
-//        System.out.println(exist(board, "ABCCED"));
+        char[][] board = new char[][]{
+                {'A','B','C','E'},
+                {'S','F','C','S'},
+                {'A', 'D', 'E','E'},
+        };
+        System.out.println(exist(board, "ABCCED"));*/
 
-
+        //array part
+//        System.out.println(powerOfTwo(8));
+//        System.out.println(solution("SMS SMS SMS",3));
+        System.out.println(solution("SMS MESSAGESOIKL ARE REALLY SHORT",12));
+;
     }
 }
