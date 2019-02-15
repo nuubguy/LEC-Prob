@@ -58,6 +58,8 @@ public class leetcode {
         return count;
     }
 
+
+
     //count island
     static int numIslands(char[][] grid) {
 
@@ -160,39 +162,43 @@ public class leetcode {
         return count;
     }
 
-//    static int longestPalindrome(String word){
-//        HashMap<Character,Integer> result = new HashMap<>();
-//        int count = 0;
-//        for(int x=0;x<word.length();x++){
-//            if (result.get(word.charAt(x))!=null){
-//                result.put(word.charAt(x),1);
-//            }else{
-//                result.replace(word.charAt(x),result.get(word.charAt(x)+1));
-//            }
-//        }
-//
-//        Iterator map = result.entrySet().iterator();
-//        boolean one = false;
-//        while (map.hasNext()){
-//
-//            Map.Entry pair = (Map.Entry)map.next();
-//            if((int)pair.getValue()==1 && one == false){
-//                count+=(int)pair.getValue();
-//                one = true;
-//            }
-//            if ((int)pair.getValue()%2 ==1){
-//
-//            }
-//
-//        }
-//
-//
-//
-//    }
+    static int longestPalindrome(String s){
+        HashMap<Character,Integer> result = new HashMap<>();
+        int count = 0;
+        for(int x=0;x<s.length();x++){
+            if (result.get(s.charAt(x))==null){
+                result.put(s.charAt(x),1);
+            }else{
+                result.put(s.charAt(x),result.get(s.charAt(x))+1);
+            }
+        }
+
+        Iterator map = result.entrySet().iterator();
+        boolean one = false;
+        while (map.hasNext()){
+            Map.Entry pair = (Map.Entry)map.next();
+            if((int)pair.getValue()==1 && one == false){
+                count+=(int)pair.getValue();
+                one = true;
+            }else
+            if ((int)pair.getValue()%2 ==1 && (int)pair.getValue()>1 && one== true){
+                count+= (int)pair.getValue()-1;
+            }else if ((int)pair.getValue()%2 ==1 && (int)pair.getValue()>1 && one== false){
+                count+= (int)pair.getValue();
+                one = true;
+            }
+            else
+            if ((int)pair.getValue()%2 ==0){
+                count+= (int)pair.getValue();
+            }
+        }
+        return count;
+    }
 
     static int solution(String S, int K) {
-        String [] splitted = S.split("\\s+");
 
+
+        String [] splitted = S.split("\\s+");
 
 
         return helperSolution(splitted,0,K,"",0);
@@ -209,13 +215,15 @@ public class leetcode {
             return helperSolution(splitted,index,K,"",sms+1);
         }
 
-        if (index == splitted.length){
-            return sms+1;
+        if (index == splitted.length-1){
+            return sms;
         }
 
         return Math.min(helperSolution(splitted,index+1,K,stringsan+splitted[index]+" ",sms),
                 helperSolution(splitted,index+1,K,splitted[index],sms+1));
     }
+
+
 
     static int stringSubFixes(String word){
         int count =0;
@@ -233,6 +241,54 @@ public class leetcode {
     return count;
     }
 
+    static int brokenCalHelper(int X, int Y,int count, int sub){
+
+        return -1;
+
+    }
+
+
+    //need more validation when using recursion
+    static boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length==0 ||matrix[0].length==0){
+            return false;
+        }
+        int x =0,y = matrix[0].length-1;
+        boolean result = false;
+
+
+        while ( result== false ){
+            if (x==matrix.length||y<0){
+                break;
+            }
+            if (matrix[x][y]== target){
+                return true;
+            }else
+            if (matrix[x][y]>target){
+                y--;
+            }else
+            if(matrix[x][y]<target){
+                x++;
+            }
+        }
+
+        return result;
+    }
+//
+//    static boolean searchMatrixHelper(int [][]matrix, int target, int coorX, int coorY){
+//        if (coorX == matrix.length || coorY == matrix[0].length){
+//            return false;
+//        }
+//
+//        if (matrix[coorX][coorY]== target){
+//            return true;
+//        }else if(matrix[coorX][coorY]>target){
+//            return searchMatrixHelper(matrix,target,coorX,coorY-1);
+//        }else{
+//            return searchMatrixHelper(matrix,target,coorX+1,coorY);
+//        }
+//    }
+
 
 
     public static void main(String[] args) {
@@ -244,7 +300,6 @@ public class leetcode {
         test for longest increasing
         int [] sequence= new int []{1,8,7};
         System.out.println(longestIncreasing(sequence,Integer.MIN_VALUE,0));*/
-
 
 
 /*        test for shortest path in triangle
@@ -278,15 +333,41 @@ public class leetcode {
         };
         System.out.println(exist(board, "ABCCED"));*/
 
-/*        SMS
-        System.out.println(powerOfTwo(8));
-        System.out.println(solution("SMS SMS SMS",3));
-        System.out.println(solution("SMS MESSAGESOIKL ARE REALLY SHORT",12));*/
+//       test SMS
+//        System.out.println(powerOfTwo(8));
+//        System.out.println(solution("SMS SMS SMS",3));
+//        System.out.println(solution("SMS MESSAGES ARE REALLY SHORT",12));
+//        System.out.println(solution("A BB C D FF",2));
 
 /*
-    string subfixes
+    test string subfixes
         System.out.println(stringSubFixes("aa"));
 */
+
+/*
+        test for longest palindrome
+        System.out.println(longestPalindrome("cccccccdd"));
+*/
+
+//        System.out.println(brokenCalHelper(3,10,0,10-3));
+
+/*
+        test for search matrix
+        int [][]result = new int [][]{
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+
+        int [][]result = new int [][]{{-5}};
+
+        System.out.println(searchMatrix(new int [][]{{-1},{-1}},-2));
+*/
+
+
 
     }
 }
