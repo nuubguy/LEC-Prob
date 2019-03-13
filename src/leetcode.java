@@ -1,8 +1,10 @@
 import com.sun.deploy.ref.Helpers;
+import com.sun.xml.internal.ws.client.dispatch.DataSourceDispatch;
 
 import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
 
 public class leetcode {
 
@@ -196,31 +198,54 @@ public class leetcode {
     }
 
     static int solution(String S, int K) {
-
-
         String [] splitted = S.split("\\s+");
 
-
-        return helperSolution(splitted,0,K,"",0);
-
+        return helperSolution(splitted,0,K,0,0,0);
     }
+    //the idea will be the same like knapsack where the recursion only hapeen in the end
+    //so we change the string into int to count all the character length
+    // in the validation will change the count and the sms      this count for string
+    static int helperSolution(String[]splitted,int index, int K,int count,int sms,int space){
 
-    static int helperSolution(String[]splitted,int index, int K,String stringsan,int sms){
-
-        if (stringsan.length()-1>K){
-            return helperSolution(splitted,index-1,K, "",sms+1);
+        if (index == splitted.length && count+space-1>K){
+            sms+=1;
+            index-=1;
+            count=0;
+        }else if (index == splitted.length){
+            return sms+1;
         }
 
-        if (stringsan.length()-1==K){
-            return helperSolution(splitted,index,K,"",sms+1);
+        if (count+space-1 > K){
+            index-=1;
+            count=0;
+            space=0;
+            sms+=1;
+        }else if (count+space-1 == K){
+            count=0;
+            space=0;
+            sms+=1;
+        }else{
+            count+=splitted[index].length();
+            index+=1;
+            space+=1;
         }
 
-        if (index == splitted.length-1){
-            return sms;
-        }
+        return helperSolution(splitted,index,K,count,sms,space);
 
-        return Math.min(helperSolution(splitted,index+1,K,stringsan+splitted[index]+" ",sms),
-                helperSolution(splitted,index+1,K,splitted[index],sms+1));
+//        if (stringsan.length()-1>K){
+//            return helperSolution(splitted,index-1,K, "",sms+1);
+//        }
+//
+//        if (stringsan.length()-1==K){
+//            return helperSolution(splitted,index,K,"",sms+1);
+//        }
+//
+//        if (index == splitted.length){
+//            return sms;
+//        }
+//
+//        return Math.min(helperSolution(splitted,index+1,K,stringsan+splitted[index]+" ",sms),
+//                helperSolution(splitted,index+1,K,splitted[index],sms+1));
     }
 
 
@@ -241,10 +266,19 @@ public class leetcode {
     return count;
     }
 
-    static int brokenCalHelper(int X, int Y,int count, int sub){
 
-        return -1;
+    static int brokenCalc(int X, int Y) {
+        int count =0;
 
+        while(X<Y){
+            if (Y%2==1){
+                Y++;
+            }else{
+                Y/=2;
+            }
+            count++;
+        }
+        return count + X-Y;
     }
 
 
@@ -274,6 +308,75 @@ public class leetcode {
 
         return result;
     }
+
+    static int islandPerimeter(int [][]grid){
+
+        int count =0;
+
+        for(int x=0;x<grid.length;x++){
+            int side =0;
+            for(int y=0;y<grid[x].length;y++){
+            }
+        }
+
+        return -1;
+    }
+
+    static int longestMountain(int []A){
+        int result =0;
+        boolean flagUp = false;
+        boolean flagDown = false;
+        int start = 0;
+        int temp = 0;
+
+        while(start<A.length-1){
+            if (A[start]>A[start+1]){
+                 temp++;
+                 flagDown= true;
+            }
+
+            if (A[start]<A[start+1] && flagDown)
+                flagUp = true;
+
+            while (flagUp){
+                temp++;
+                if (temp>result)
+                    result = temp;
+
+                if (A[start]>A[start+1]){
+                    temp=0;
+                    break;
+                }
+                start++;
+            }
+            start++;
+        }
+//        int count=0;
+//
+//        for(int x=0;x<A.length-1;x++){
+//            int temp =0;
+//            boolean up= false;
+//            boolean down = false;
+//            for(int y=x+1;y<A.length;y++){
+//                if(A[y-1]<A[y]&& down== false){
+//                    temp++;
+//                    up= true;
+//                }
+//                else if(A[y-1]>A[y]&& up==true){
+//                    temp++;
+//                    down= true;
+//                }else{
+//                    break;
+//                }
+//
+//
+//            }
+//            count=(temp>count && up==true && down== true)?temp:count;
+//        }
+//        return count;
+    }
+
+
 //
 //    static boolean searchMatrixHelper(int [][]matrix, int target, int coorX, int coorY){
 //        if (coorX == matrix.length || coorY == matrix[0].length){
@@ -288,6 +391,49 @@ public class leetcode {
 //            return searchMatrixHelper(matrix,target,coorX+1,coorY);
 //        }
 //    }
+
+    //palindrome partition
+    static void pphelper(String s,int index,List<List<String>>lists,List<String>list){
+        if (index== s.length()){
+            List<String>result = new ArrayList<>(list);
+            lists.add(result);
+            return;
+        }
+
+
+        for(int x=index; x<s.length();x++){
+            if (checkPalindrome(s.substring(index,x+1))){
+                String check = s.substring(index,x+1);
+                list.add(check);
+                pphelper(s,x+1,lists,list);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+
+    static List<List<String>> palindromePartition(String s){
+        List<List<String>>results = new ArrayList<>();
+        List<String> temp = new ArrayList<>();
+        pphelper(s, 0, results, temp);
+
+        return results;
+
+    }
+
+    static boolean checkPalindrome(String s){
+        int start = 0;
+        int end = s.length()-1;
+
+        while (start<=end){
+            if (s.charAt(start)!=s.charAt(end))
+                return false;
+
+            start++;
+            end--;
+        }
+        return true;
+    }
+    //
 
 
 
@@ -333,9 +479,12 @@ public class leetcode {
         };
         System.out.println(exist(board, "ABCCED"));*/
 
-//       test SMS
+        //power of two
 //        System.out.println(powerOfTwo(8));
+
+//        test SMS
 //        System.out.println(solution("SMS SMS SMS",3));
+//        System.out.println(solution("abc abcd abcd ab",8));
 //        System.out.println(solution("SMS MESSAGES ARE REALLY SHORT",12));
 //        System.out.println(solution("A BB C D FF",2));
 
@@ -366,8 +515,12 @@ public class leetcode {
 
         System.out.println(searchMatrix(new int [][]{{-1},{-1}},-2));
 */
+//        System.out.println(brokenCalc(2,3));
 
+        //longest mountain
+        System.out.println(longestMountain(new int []{2,2,2,3,5}));
 
-
+        //palindrome partition
+        System.out.println(palindromePartition("aaa").toString());
     }
 }
