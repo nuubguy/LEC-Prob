@@ -322,35 +322,37 @@ public class leetcode {
         return -1;
     }
 
-    static int longestMountain(int []A){
-        int result =0;
-        boolean flagUp = false;
-        boolean flagDown = false;
-        int start = 0;
-        int temp = 0;
-
-        while(start<A.length-1){
-            if (A[start]>A[start+1]){
-                 temp++;
-                 flagDown= true;
-            }
-
-            if (A[start]<A[start+1] && flagDown)
-                flagUp = true;
-
-            while (flagUp){
-                temp++;
-                if (temp>result)
-                    result = temp;
-
-                if (A[start]>A[start+1]){
-                    temp=0;
-                    break;
+    static boolean perfectNumber(int number){
+        int num =0;
+        for(int x=1;x*x<=number;x++){
+            if(number%x==0){
+                num+=x;
+                if(x * x !=number){
+                    num+=number/x;
                 }
-                start++;
             }
-            start++;
         }
+        return num-number==number;
+    }
+
+    static int longestMountain(int []A){
+        int ans=0,base=0;
+        while(base<A.length){
+            int end = base;
+
+            if(end +1<A.length && A[end]<A[end+1]){
+                while(end +1<A.length && A[end]<A[end+1])
+                    end++;
+
+                if(end+1<A.length && A[end]>A[end+1]){
+                    while(end +1<A.length && A[end]>A[end+1])
+                        end++;
+                    ans = Math.max(ans,end-base+1);
+                }
+            }
+            base = Math.max(end,base + 1);
+        }
+        return ans;
 //        int count=0;
 //
 //        for(int x=0;x<A.length-1;x++){
@@ -517,10 +519,11 @@ public class leetcode {
 */
 //        System.out.println(brokenCalc(2,3));
 
-        //longest mountain
-        System.out.println(longestMountain(new int []{2,2,2,3,5}));
-
-        //palindrome partition
-        System.out.println(palindromePartition("aaa").toString());
+//        //longest mountain
+//        System.out.println(longestMountain(new int []{2,3,3,2,0,2}));
+//
+//        //palindrome partition
+//        System.out.println(palindromePartition("aaa").toString());
+        System.out.println(perfectNumber(28));
     }
 }
