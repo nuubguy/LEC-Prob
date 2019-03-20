@@ -8,10 +8,18 @@ import java.util.concurrent.CountDownLatch;
 
 public class leetcode {
 
+      static public class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode(int x) { val = x; }
+ }
+
     //longest common subsequence
     //complexity will be 2pow(n)
     static int longestCommonSubsequence(String firstWord, String secondWord, int firstWordLength, int secondWordLength) {
-        if (firstWordLength == 0 || secondWordLength == 0) {
+
+          if (firstWordLength == 0 || secondWordLength == 0) {
             return 0;
         }
         if (firstWord.charAt(firstWordLength - 1) == secondWord.charAt(secondWordLength - 1)) {
@@ -318,7 +326,6 @@ public class leetcode {
             for(int y=0;y<grid[x].length;y++){
             }
         }
-
         return -1;
     }
 
@@ -334,6 +341,10 @@ public class leetcode {
         }
         return num-number==number;
     }
+
+
+
+
 
     static int longestMountain(int []A){
         int ans=0,base=0;
