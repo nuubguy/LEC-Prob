@@ -430,7 +430,27 @@ public class leetcode {
         pphelper(s, 0, results, temp);
 
         return results;
+    }
 
+    static TreeNode invertTree(TreeNode root){
+          Queue<TreeNode>trees = new LinkedList<>();
+          trees.add(root);
+
+          while (trees.size()!=0){
+              TreeNode currentRoot = trees.peek();
+              if(currentRoot.left!=null)
+                  trees.add(currentRoot.left);
+              if (currentRoot.right!=null)
+                  trees.add(currentRoot.right);
+
+              TreeNode temp = currentRoot.left;
+              currentRoot.left = currentRoot.right;
+              currentRoot.right = temp;
+
+              trees.poll();
+          }
+
+          return root;
     }
 
     static boolean checkPalindrome(String s){
@@ -445,6 +465,30 @@ public class leetcode {
             end--;
         }
         return true;
+    }
+
+    static int bitwiseComplement(int N) {
+          if (N==0){
+              return 0;
+          }else if(N==1){
+              return 1;
+          }
+
+
+          int count =N;
+          String temp ="";
+          while (count!=0){
+              if ((count & 1)==1){
+                  temp = "0"+temp;
+              }else{
+                  temp = "1"+temp;
+              }
+              count>>=1;
+          }
+//        int base = 10;
+//        System.out.println(Integer.toBinaryString(base));
+//        return -1;
+        return Integer.parseInt(temp,2);
     }
     //
 
@@ -535,6 +579,22 @@ public class leetcode {
 //
 //        //palindrome partition
 //        System.out.println(palindromePartition("aaa").toString());
-        System.out.println(perfectNumber(28));
+
+        //perfect number
+//        System.out.println(perfectNumber(28));
+
+        //invert binary tree
+//        TreeNode mainTree = new TreeNode(4);
+//        mainTree.left = new TreeNode(2);
+//        mainTree.left.left = new TreeNode(1);
+//        mainTree.left.right = new TreeNode(3);
+//        mainTree.right = new TreeNode(7);
+//        mainTree.right.left = new TreeNode(6);
+//        mainTree.right.right = new TreeNode(9);
+//
+//        invertTree(mainTree);
+//        System.out.println(bitwiseComplement(0));
+
+
     }
 }
