@@ -490,7 +490,190 @@ public class leetcode {
 //        return -1;
         return Integer.parseInt(temp,2);
     }
+
+    static int minDominoRotations(int[] A, int[] B) {
+        return -1;
+    }
+
+    static boolean minValue(String S){
+//          Stack<Character>temp = new Stack<>();
+//          char current = ' ';
+//          for(int x=0;x<S.length();x++){
+//             if (x==0 && S.charAt(x)=='a'){
+//                 current+=S.charAt(x);
+//             }else if (x==0 && S.charAt(x)=='b'||S.charAt(x)=='c'){
+//                 return false;
+//             }
+//
+//             if (current == "ahahahaha".to){
+//
+//             }
+//
+//          }
+//
+//          return false;
+        return false;
+    }
+
+    static public List<String> commonChars(String[] A) {
+          List<String>result = new ArrayList<>();
+          int []current = new int [26];
+          for(int j=0;j<A[0].length();j++){
+              current[A[0].charAt(j)-'a']++;
+          }
+
+          for(int x=1;x<A.length;x++){
+              int []temp = new int [26];
+              for(int z=0;z<A[x].length();z++){
+                  temp[A[x].charAt(z)-'a']++;
+              }
+              for(int i=0;i<26;i++){
+                  if (current[i]>temp[i]){
+                      current[i]= temp[i];
+                  }
+              }
+          }
+
+          for(int a=0;a<26;a++){
+              for(int x=0;x<current[a];x++){
+                  result.add(Character.toString((char)(a+'a')));
+              }
+          }
+
+//        List<String> ans = new ArrayList<>();
+//        // Common characters dictionary
+//        int[] dict = new int[26];
+//        for (int j = 0; j < A[0].length(); j++) {
+//            dict[A[0].charAt(j) - 'a']++;
+//        }
+//        for (int i = 1; i < A.length; i++) {
+//            // Dictionary of the current word
+//            int[] curr = new int[26];
+//            for (int j = 0; j < A[i].length(); j++) {
+//                curr[A[i].charAt(j) - 'a']++;
+//            }
+//            // Update the common dictionary
+//            for (int j = 0; j < 26; j++) {
+//                if (curr[j] < dict[j]) dict[j] = curr[j];
+//            }
+//        }
+//        for (int i = 0; i < 26; i++) {
+//            for (int j = 0; j < dict[i]; j++) {
+//                ans.add(Character.toString((char) ('a' + i)));
+//            }
+//        }
+//        return ans;
+        return result;
+    }
+
+    static public boolean canThreePartsEqualSum(int[] A) {
+        int count =0;
+
+        for(int x=0;x<A.length;x++){
+            count+=A[x];
+        }
+
+        if(count%3!=0)
+            return false;
+
+        count= count/3;
+        int countEquals=0;
+        int reset =0;
+
+        for(int z=0;z<A.length;z++){
+            reset+=A[z];
+            if (reset==count) {
+                countEquals++;
+                reset = 0;
+            }
+        }
+        return countEquals==3;
+    }
+
+    public void gameOfLife(int[][] board) {
+        for(int x=0;x<board.length;x++){
+            for(int z=0;z<board[0].length;z++){
+
+            }
+        }
+    }
+//    public boolean checkGolHelper(int x, int y){
+//        if(x>0 && y>0){
+//
+//        }
+//    }
+
     //
+
+    static boolean increasingTriplet(int[] nums) {
+
+        if(nums.length == 0)
+            return false;
+
+        int min = Integer.MAX_VALUE;
+        int second_min = Integer.MAX_VALUE;
+
+        int i=0;
+
+        while(i < nums.length){
+
+            if(nums[i] < min)
+                min = nums[i];
+
+            else if (nums[i] == min || nums[i] == second_min){
+
+            }
+
+            else if(nums[i] < second_min)
+                second_min = nums[i];
+
+            else
+                return true;
+
+            i++;
+
+        }
+
+        return false;
+    }
+
+    static boolean lemonadeChange(int[] bills) {
+        int five =0;
+        int ten =0;
+
+        for(int bill:bills){
+            if (bill==5)
+                five++;
+
+            else if (bill == 10 && five==0){
+                return false;
+            }else if(bill == 10 && five!=0){
+                five--;
+                ten++;
+            }else if (bill==20 && ten>0 && five>0){
+                five--;
+                ten--;
+            }else if (bill==20 && ten==0 && five>=3){
+                five-=3;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    //convert binary to decimal
+    static public List<Boolean> prefixesDivBy5(int[] A){
+        int k = 0;
+        List<Boolean> ans = new ArrayList<>();
+        for (int a : A) {
+            k = (k << 1 | a) % 5;
+            ans.add(k == 0);
+        }
+        return ans;
+    }
+
 
 
 
@@ -595,6 +778,15 @@ public class leetcode {
 //        invertTree(mainTree);
 //        System.out.println(bitwiseComplement(0));
 
+         //common character
+//        System.out.println(commonChars(new String[]{"bella","label","roller"}));
 
-    }
+//        System.out.println(canThreePartsEqualSum(new int []{0,2,1,-6,6,7,9,-1,2,0,1}));
+//        System.out.println(increasingTriplet(new int[]{1,0,0,10,0,0,1000}));
+
+//        System.out.println(lemonadeChange(new int []{5,5,10,10,20}));
+
+        System.out.println(prefixesDivBy5(new int []{1,1,1,0,1}));
+      }
+
 }
