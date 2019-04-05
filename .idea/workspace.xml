@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/leetcode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="668" column="23" lean-forward="true" selection-start-line="668" selection-start-column="23" selection-end-line="668" selection-end-column="23" />
+            <state relative-caret-position="238">
+              <caret line="717" column="38" selection-start-line="717" selection-start-column="38" selection-end-line="717" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#14120#14121#0" expanded="true" />
@@ -86,6 +86,8 @@
       <find>sms</find>
       <find>broken</find>
       <find>perfe</find>
+      <find>longes</find>
+      <find>longestc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -101,7 +103,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="1366" />
     <option name="height" value="728" />
   </component>
@@ -119,7 +121,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554098768778" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554387333187" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -256,15 +258,24 @@
       <workItem from="1553673096816" duration="1806000" />
       <workItem from="1553693813062" duration="6162000" />
       <workItem from="1553745101428" duration="3978000" />
-      <workItem from="1554091797728" duration="3855000" />
+      <workItem from="1554091797728" duration="15410000" />
+      <workItem from="1554178030880" duration="775000" />
+      <workItem from="1554179230554" duration="590000" />
+      <workItem from="1554348494296" duration="2030000" />
+      <workItem from="1554359546688" duration="693000" />
+      <workItem from="1554362288728" duration="579000" />
+      <workItem from="1554374460008" duration="587000" />
+      <workItem from="1554382894324" duration="1141000" />
+      <workItem from="1554434886539" duration="601000" />
+      <workItem from="1554465351265" duration="586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311636000" />
+    <option name="totallyTimeSpent" value="330773000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="728" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4987715" weight="0.52487963" />
@@ -276,15 +287,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32843137" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848714" weight="0.3517316" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39502165" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848714" weight="0.35130718" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39379084" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32843137" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" weight="0.33660132" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49924356" weight="0.3365801" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5015129" side_tool="true" weight="0.33496732" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32718122" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -312,51 +323,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>781</line>
+          <line>849</line>
           <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>784</line>
+          <line>851</line>
           <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>786</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>667</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>668</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>670</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>671</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>788</line>
-          <properties />
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -395,8 +370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/leetcode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="668" column="23" lean-forward="true" selection-start-line="668" selection-start-column="23" selection-end-line="668" selection-end-column="23" />
+        <state relative-caret-position="238">
+          <caret line="717" column="38" selection-start-line="717" selection-start-column="38" selection-end-line="717" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#14120#14121#0" expanded="true" />

@@ -675,6 +675,66 @@ public class leetcode {
     }
 
 
+    static public int maxProfit(int[] prices, int fee) {
+        /*int low =Integer.MIN_VALUE, high = Integer.MIN_VALUE;
+        int result =0;
+        for(int x=0;x<prices.length;x++){
+            if(low !=Integer.MIN_VALUE && high==Integer.MIN_VALUE && prices[x]-low>fee){
+                high = prices[x];
+            }
+            if(high!= Integer.MIN_VALUE && prices[x]>high){
+                high = prices[x];
+            }
+            if(high!=Integer.MIN_VALUE && (high- prices[x]>fee || x==prices.length-1)){
+                result = high - low - fee;
+                high = Integer.MIN_VALUE;
+                low = Integer.MIN_VALUE;
+            }
+            low = (low!=Integer.MIN_VALUE)?Math.min(low,prices[x]):prices[x];
+        }*/
+                  int profit = 0;
+        Integer lo = null, hi = null, n = prices.length;
+        for (int i = 0; i < n; i++) {
+            if (lo != null && hi == null && prices[i] - lo > fee)
+                hi = prices[i]; // buy in
+            if (hi != null && prices[i] > hi)
+                hi = prices[i]; // update highest
+            if (hi != null && (hi - prices[i] > fee || i == n - 1)) {
+                profit += hi - lo - fee;
+                hi = null;
+                lo = null;
+            }
+
+            lo = lo != null ? Math.min(lo, prices[i]) : prices[i];
+        }
+        return profit;
+//        return result;
+    }
+
+    static boolean isSubsequence(String s, String t) {
+        int sLength= s.length()-1;
+        int tLength = t.length()-1;
+
+        while(sLength>=0 && tLength>=0){
+              if (s.charAt(sLength)==t.charAt(tLength)){
+                  sLength--;
+                  tLength--;
+              }else{
+                  tLength--;
+              }
+          }
+        if (sLength==-1)
+            return true;
+
+
+        return false;
+    }
+
+
+
+
+
+
 
 
     public static void main(String[] args) {
@@ -786,7 +846,10 @@ public class leetcode {
 
 //        System.out.println(lemonadeChange(new int []{5,5,10,10,20}));
 
-        System.out.println(prefixesDivBy5(new int []{1,1,1,0,1}));
+//        System.out.println(prefixesDivBy5(new int []{1,1,1,0,1}));
+//        System.out.println(maxProfit(new int []{1, 3, 7, 5, 10, 3},3));
+
+        System.out.println(isSubsequence("axc","ahbgdc"));
       }
 
 }
