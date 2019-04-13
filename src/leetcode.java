@@ -725,14 +725,96 @@ public class leetcode {
           }
         if (sLength==-1)
             return true;
-
-
         return false;
     }
 
+    static int numRescueBoats(int[] people, int limit) {
+        int count =0;
+        int firstPointer =0;
+        int secondPointer = people.length-1;
 
+        Arrays.sort(people);
 
+        while(firstPointer<=secondPointer){
+            count++;
+            if (people[firstPointer]+people[secondPointer]<=limit){
+                secondPointer--;
+            }
+            firstPointer++;
+        }
 
+        return count;
+    }
+
+    public String predictPartyVictory(String senate) {
+        int rad =0;
+        int dire=0;
+
+        for(int x=0;x<senate.length();x++){
+            if(senate.charAt(x)=='R')
+                rad++;
+            if(senate.charAt(x)=='D')
+                dire++;
+
+        }
+        if (rad>dire){
+            return "Radiant";
+        }else if(rad<dire){
+            return "Dire";
+        }
+
+        return Character.toString(senate.charAt(0));
+    }
+
+    static public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+          boolean []door = new boolean[rooms.size()];
+          door[0] =true;
+          Stack<Integer>key = new Stack<>();
+          key.push(0);
+
+          while (!key.empty()){
+              int index = key.pop();
+
+              for(int temp :rooms.get(index)){
+                  if (!door[temp]){
+                      door[temp]= true;
+                      key.push(temp);
+                  }
+              }
+          }
+          for (boolean result :door)
+              if (!result)
+                  return false;
+
+        return true;
+    }
+
+    static public int maxAreaOfIsland(int [][]grid, int x, int y){
+
+          if (x==-1||y==-1||x==grid.length||y==grid[0].length){
+              return 0;
+          }
+
+          if (grid[x][y]==0 || grid[x][y]==-1)
+            return 0;
+
+        if (grid[x][y]==1){
+            grid[x][y]=-1;
+        }
+        return 1+maxAreaOfIsland(grid,x,y+1)+maxAreaOfIsland(grid,x,y-1)+
+                maxAreaOfIsland(grid,x+1,y)+maxAreaOfIsland(grid,x-1,y);
+    }
+
+    static public int maxAreaOfIsland(int[][] grid) {
+        int count =0;
+        for(int x=0;x<grid.length;x++){
+            for(int y=0;y<grid[0].length;y++){
+                if (grid[x][y]==1)
+                    count= Math.max(count,maxAreaOfIsland(grid,x,y));
+            }
+        }
+        return -1;
+    }
 
 
 
@@ -786,7 +868,9 @@ public class leetcode {
 //        System.out.println(solution("SMS SMS SMS",3));
 //        System.out.println(solution("abc abcd abcd ab",8));
 //        System.out.println(solution("SMS MESSAGES ARE REALLY SHORT",12));
-//        System.out.println(solution("A BB C D FF",2));
+//        System.out.println(solution("A BB
+//
+//        C D FF",2));
 
 /*
     test string subfixes
@@ -849,7 +933,22 @@ public class leetcode {
 //        System.out.println(prefixesDivBy5(new int []{1,1,1,0,1}));
 //        System.out.println(maxProfit(new int []{1, 3, 7, 5, 10, 3},3));
 
-        System.out.println(isSubsequence("axc","ahbgdc"));
-      }
+//        System.out.println(isSubsequence("axc","ahbgdc"));
+//        System.out.println(numRescueBoats(new int []{1,2},3));
 
+        List<List<Integer>>abc = new ArrayList<>();
+        List <Integer>abc1 = new ArrayList<>();
+        abc1.add(1);
+        List <Integer>abc2 = new ArrayList<>();
+        abc2.add(2);
+        List <Integer>abc4 = new ArrayList<>();
+        List <Integer>abc3 = new ArrayList<>();
+        abc2.add(3);
+        abc.add(abc1);
+        abc.add(abc2);
+        abc.add(abc3);
+
+        System.out.println(canVisitAllRooms(abc));
+
+      }
 }
