@@ -789,7 +789,7 @@ public class leetcode {
         return true;
     }
 
-    static public int maxAreaOfIsland(int [][]grid, int x, int y){
+    static public int helperMaxAreaOfIsland(int [][]grid, int x, int y){
 
           if (x==-1||y==-1||x==grid.length||y==grid[0].length){
               return 0;
@@ -801,8 +801,8 @@ public class leetcode {
         if (grid[x][y]==1){
             grid[x][y]=-1;
         }
-        return 1+maxAreaOfIsland(grid,x,y+1)+maxAreaOfIsland(grid,x,y-1)+
-                maxAreaOfIsland(grid,x+1,y)+maxAreaOfIsland(grid,x-1,y);
+        return 1+helperMaxAreaOfIsland(grid,x,y+1)+helperMaxAreaOfIsland(grid,x,y-1)+
+                helperMaxAreaOfIsland(grid,x+1,y)+helperMaxAreaOfIsland(grid,x-1,y);
     }
 
     static public int maxAreaOfIsland(int[][] grid) {
@@ -810,12 +810,81 @@ public class leetcode {
         for(int x=0;x<grid.length;x++){
             for(int y=0;y<grid[0].length;y++){
                 if (grid[x][y]==1)
-                    count= Math.max(count,maxAreaOfIsland(grid,x,y));
+                    count= Math.max(count,helperMaxAreaOfIsland(grid,x,y));
             }
         }
-        return -1;
+        return count;
     }
 
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>>result = new ArrayList<>();
+        Integer[]temp = new Integer[nums.length];
+        for(int x=0;x<temp.length;x++){
+            temp[x]= nums[x];
+        }
+
+        permuteHelper(temp,result,0,nums.length-1);
+
+        return result;
+    }
+
+    public void permuteHelper(Integer[] nums,List<List<Integer>>result,int x,int y) {
+        if (x==y){
+            result.add(Arrays.asList(nums));
+        }
+        for(int z=x;z<nums.length;z++){
+            swap(nums,x,y);
+            permuteHelper(nums,result,x+1,y);
+            swap(nums,x,y);
+        }
+    }
+
+    public void swap(Integer []nums, int x,int y){
+          nums[x]= nums[x]+nums[y];
+          nums[y]= nums[x]-nums[y];
+          nums[x]= nums[x]-nums[y];
+    }
+
+    static public int lengthOfLIS(int[] nums) {
+        int count =0;
+
+        for(int x=0;x<nums.length-1;x++){
+            int temp =1;
+            int flag = nums[x];
+            for(int z=x+1;z<nums.length;z++){
+                if(flag<nums[z]){
+                    flag= nums[z];
+                    temp++;
+                }
+            }
+            count = Math.max(count,temp);
+        }
+        return count;
+    }
+
+    static List<Integer>inorderTraversal(TreeNode root){
+          List<Integer>fullResult = new ArrayList<>();
+          Stack<Integer>result = new Stack<>();
+          Queue<TreeNode>temp = new PriorityQueue<>();
+          temp.add(root);
+          while (!temp.isEmpty()){
+              result.push(root.val);
+              TreeNode check = temp.poll();
+              if (check.left!=null)
+                  temp.add(check.left);
+
+              if (check.right!=null)
+                  temp.add(check.right);
+          }
+          while (!result.isEmpty()){
+              fullResult.add(result.pop());
+          }
+          return fullResult;
+    }
+
+    public int uniquePaths(int m, int n) {
+
+    }
 
 
 
@@ -936,19 +1005,25 @@ public class leetcode {
 //        System.out.println(isSubsequence("axc","ahbgdc"));
 //        System.out.println(numRescueBoats(new int []{1,2},3));
 
-        List<List<Integer>>abc = new ArrayList<>();
-        List <Integer>abc1 = new ArrayList<>();
-        abc1.add(1);
-        List <Integer>abc2 = new ArrayList<>();
-        abc2.add(2);
-        List <Integer>abc4 = new ArrayList<>();
-        List <Integer>abc3 = new ArrayList<>();
-        abc2.add(3);
-        abc.add(abc1);
-        abc.add(abc2);
-        abc.add(abc3);
+//        List<List<Integer>>abc = new ArrayList<>();
+//        List <Integer>abc1 = new ArrayList<>();
+//        abc1.add(1);
+//        List <Integer>abc2 = new ArrayList<>();
+//        abc2.add(2);
+//        List <Integer>abc4 = new ArrayList<>();
+//        List <Integer>abc3 = new ArrayList<>();
+//        abc2.add(3);
+//        abc.add(abc1);
+//        abc.add(abc2);
+//        abc.add(abc3);
+//
+//        System.out.println(canVisitAllRooms(abc));
 
-        System.out.println(canVisitAllRooms(abc));
+
+//        System.out.println(maxAreaOfIsland(new int [][]{{0,0,1,0,0,0,0,1,0,0,0,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,1,1,0,1,0,0,0,0,0,0,0,0},
+//                {0,1,0,0,1,1,0,0,1,0,1,0,0},{0,1,0,0,1,1,0,0,1,1,1,1,0},{0,0,0,0,0,0,0,0,0,0,1,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,0,0,0,0,0,0,1,1,0,0,0,0}}));
+
+        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
 
       }
 }
