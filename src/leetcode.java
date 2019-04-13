@@ -882,8 +882,31 @@ public class leetcode {
           return fullResult;
     }
 
-    public int uniquePaths(int m, int n) {
+    static public int uniquePaths(int m, int n) {
+        int [][] result  = new int[n][m];
+        for(int x=0;x<result[0].length;x++){
+            result[0][x]=1;
+        }
+        for(int x=0;x<result.length;x++){
+            result[x][0]=1;
+        }
 
+        for(int x=1;x<result.length;x++){
+            for(int u=1;u<result[0].length;u++){
+                result[x][u]=result[x-1][u]+result[x][u-1];
+            }
+        }
+        return result[n-1][m-1];
+    }
+
+    static public int uniquePathsHelper(int startM, int startN,int m,int n){
+          if (startM>m || startN>n){
+              return 0;
+          }
+          if (startM ==m && startN== n){
+              return 1;
+          }
+          return uniquePathsHelper(startM+1, startN,m,n)+uniquePathsHelper(startM, startN+1,m,n);
     }
 
 
@@ -1023,7 +1046,7 @@ public class leetcode {
 //        System.out.println(maxAreaOfIsland(new int [][]{{0,0,1,0,0,0,0,1,0,0,0,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,1,1,0,1,0,0,0,0,0,0,0,0},
 //                {0,1,0,0,1,1,0,0,1,0,1,0,0},{0,1,0,0,1,1,0,0,1,1,1,1,0},{0,0,0,0,0,0,0,0,0,0,1,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,0,0,0,0,0,0,1,1,0,0,0,0}}));
 
-        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
-
+//        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
+        System.out.println(uniquePaths(3,2));
       }
 }
