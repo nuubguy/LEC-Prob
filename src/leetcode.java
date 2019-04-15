@@ -14,6 +14,15 @@ public class leetcode {
       TreeNode(int x) { val = x; }
  }
 
+ static public class ListNode{
+          ListNode next;
+          int val;
+
+     public ListNode(int val) {
+         this.val = val;
+     }
+ }
+
     //longest common subsequence
     //complexity will be 2pow(n)
     static int longestCommonSubsequence(String firstWord, String secondWord, int firstWordLength, int secondWordLength) {
@@ -953,18 +962,28 @@ public class leetcode {
         return -1;
     }
 
-    static public int longestArithSeqLengthHelper(int[] A, int prev, int dif,int pos) {
-        if (pos == A.length){
-            return 0;
+//    static public int longestArithSeqLengthHelper(int[] A, int prev, int dif,int pos) {
+//        if (pos == A.length){
+//            return 0;
+//        }
+//        int taken =0;
+//        if (Math.abs(prev-A[pos])==dif)
+//            taken = 1+longestArithSeqLengthHelper(A,A[pos],dif,pos+1);
+//
+//        int notTaken = longestArithSeqLengthHelper(A,)
+//    }
+        static public ListNode deleteDuplicates(ListNode head) {
+          ListNode current = head;
+
+          while (current!= null && current.next!=null){
+              if (current.val == current.next.val){
+                  current.next = current.next.next;
+              }else{
+                  current = current.next;
+              }
+          }
+          return head;
         }
-        int taken =0;
-        if (Math.abs(prev-A[pos])==dif)
-            taken = 1+longestArithSeqLengthHelper(A,A[pos],dif,pos+1);
-
-        int notTaken = longestArithSeqLengthHelper(A,)
-
-
-    }
 
 
 
@@ -1106,7 +1125,7 @@ public class leetcode {
 //        System.out.println(maxAreaOfIsland(new int [][]{{0,0,1,0,0,0,0,1,0,0,0,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,1,1,0,1,0,0,0,0,0,0,0,0},
 //                {0,1,0,0,1,1,0,0,1,0,1,0,0},{0,1,0,0,1,1,0,0,1,1,1,1,0},{0,0,0,0,0,0,0,0,0,0,1,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,0,0,0,0,0,0,1,1,0,0,0,0}}));
 
-        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
+//        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
 //        System.out.println(uniquePaths(3,2));
 
 
