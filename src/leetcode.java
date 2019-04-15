@@ -847,18 +847,32 @@ public class leetcode {
     static public int lengthOfLIS(int[] nums) {
         int count =0;
 
-        for(int x=0;x<nums.length-1;x++){
-            int temp =1;
-            int flag = nums[x];
-            for(int z=x+1;z<nums.length;z++){
-                if(flag<nums[z]){
-                    flag= nums[z];
-                    temp++;
-                }
-            }
-            count = Math.max(count,temp);
-        }
+//        for(int x=0;x<nums.length-1;x++){
+//            int temp =1;
+//            int flag = nums[x];
+//            for(int z=x+1;z<nums.length;z++){
+//                if(flag<nums[z]){
+//                    flag= nums[z];
+//                    temp++;
+//                }
+//            }
+//            count = Math.max(count,temp);
+//        }
         return count;
+    }
+
+    public int lengthOfLIShelper(int []nums,int prev, int cur){
+          if(cur== nums.length){
+              return 0;
+          }
+          int taken =0;
+          if (nums[cur]>prev){
+              taken = 1+ lengthOfLIShelper(nums,nums[cur],cur+1);
+          }
+          int notTaken =lengthOfLIShelper(nums,prev,cur+1);
+
+          return Math.max(taken, notTaken);
+
     }
 
     static List<Integer>inorderTraversal(TreeNode root){
@@ -907,6 +921,53 @@ public class leetcode {
           }
           return uniquePathsHelper(startM+1, startN,m,n)+uniquePathsHelper(startM, startN+1,m,n);
     }
+
+    public int searchRotatedArray(int[] nums, int target) {
+        int middle = (nums.length-1)/2;
+
+        return -1;
+    }
+
+    static public List<Integer> topKFrequent(int[] nums, int k) {
+        List<Integer>result = new ArrayList<>();
+        HashMap<Integer,Integer>check = new HashMap<>();
+
+        for(int temp :nums){
+            if (check.get(temp)==null){
+                check.put(temp,1);
+            }else{
+                check.put(temp,check.get(temp)+1);
+            }
+        }
+        Set<Integer>subResult = check.keySet();
+
+        for(int iter :subResult){
+            if (check.get(iter)>=k)
+                result.add(iter);
+        }
+
+        return result;
+    }
+
+    public int longestArithSeqLength(int[] A) {
+        return -1;
+    }
+
+    static public int longestArithSeqLengthHelper(int[] A, int prev, int dif,int pos) {
+        if (pos == A.length){
+            return 0;
+        }
+        int taken =0;
+        if (Math.abs(prev-A[pos])==dif)
+            taken = 1+longestArithSeqLengthHelper(A,A[pos],dif,pos+1);
+
+        int notTaken = longestArithSeqLengthHelper(A,)
+
+
+    }
+
+
+
 
 
 
@@ -1045,9 +1106,9 @@ public class leetcode {
 //        System.out.println(maxAreaOfIsland(new int [][]{{0,0,1,0,0,0,0,1,0,0,0,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,1,1,0,1,0,0,0,0,0,0,0,0},
 //                {0,1,0,0,1,1,0,0,1,0,1,0,0},{0,1,0,0,1,1,0,0,1,1,1,1,0},{0,0,0,0,0,0,0,0,0,0,1,0,0},{0,0,0,0,0,0,0,1,1,1,0,0,0},{0,0,0,0,0,0,0,1,1,0,0,0,0}}));
 
-//        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
+        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
 //        System.out.println(uniquePaths(3,2));
-        System.out.println("a");
+
 
 
       }
