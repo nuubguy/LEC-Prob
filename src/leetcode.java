@@ -1,9 +1,6 @@
 
 
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
 import java.util.*;
-import java.util.concurrent.CountDownLatch;
 
 public class leetcode {
 
@@ -1007,14 +1004,106 @@ public class leetcode {
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
+        while(headA!=null && headA.next!=null){
+            ListNode temp = headB;
+            while (temp!=null && temp.next!=null){
+                if (temp.val== headA.val){
+                    return temp;
+                }
+                temp = temp.next;
+            }
+            headA = headA.next;
+        }
+        return null;
+    }
+
+    static boolean hasPathSumHelper(TreeNode root, int sum,int temp) {
+        if(root == null)
+            return false;
+
+        if (temp== sum){
+            return true;
+        }
+        return hasPathSumHelper(root.left,sum,temp+root.val)||hasPathSumHelper(root.left,sum,temp+root.val);
+    }
+
+    static public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>>result = new ArrayList<>();
+        List<Integer>temp = new ArrayList<>();
+
+        helper(root,sum,result,temp);
+        return result;
+    }
+
+    static void helper(TreeNode root, int sum, List<List<Integer>> res, List<Integer> path){
+        if(root==null){
+            if (sum==0){
+             res.add(path);
+            }
+            return;
+        }
+        path.add(root.val);
+
+//        if(root.left==null && root.right==null ){
+//            if(root.val==sum)
+//                res.add(new ArrayList<Integer>(path));
+//            return;
+//        }
+//        if(root.left!=null) {
+            helper(root.left,sum-root.val,res,path);
+            path.remove(path.size()-1);
+//        }
+//        if(root.right!=null) {
+            helper(root.right,sum-root.val,res,path);
+            path.remove(path.size()-1);
+//        }
     }
 
 
+    //basic knowledge about combinationSumHelper and dp
+    public static List<List<Integer>> combinationSum(int[] nums, int target) {
+        List<List<Integer>> list = new ArrayList<>();
+        Arrays.sort(nums);
+        combinationSumHelper(list, new ArrayList<>(), nums, target, 0);
+        return list;
+    }
+
+    private static void combinationSumHelper(List<List<Integer>> list, List<Integer> tempList, int [] nums, int remain, int start){
+        if (remain<0){
+            return;
+        }else if (remain ==0){
+            list.add(new ArrayList<>(tempList));
+        }else{
+            for(int x=start;x<nums.length;x++){
+                tempList.add(nums[x]);
+                combinationSumHelper(list,tempList,nums,remain-nums[x],x);
+                tempList.remove(tempList.size()-1);
+            }
+        }
+    }
+
+    public static int change2(int amount, int[] coins) {
+          int [][]map = new int [coins.length+1][amount+1];
+          for(int x)
+          //recursion solved
+//        return change2Helper(amount,coins,0);
 
 
+    }
 
-
-
+    static int change2Helper(int amount, int[]coins,int index){
+        int com =0;
+        if (amount<0) {
+            return 0;
+        }else if(amount==0){
+            return 1;
+        }else{
+            for(int x=index;x<coins.length;x++){
+                com += change2Helper(amount-coins[x],coins,x);
+            }
+        }
+        return com;
+    }
 
     public static void main(String[] args) {
 /*        test for longestCommonSubsequencce
@@ -1153,8 +1242,23 @@ public class leetcode {
 
 //        System.out.println(lengthOfLIS(new int []{10,9,2,5,3,7,101,18}));
 //        System.out.println(uniquePaths(3,2));
+//          TreeNode test = new TreeNode(5);
+//          test.left = new TreeNode(4);
+//          test.right = new TreeNode(8);
+//          test.left.left = new TreeNode(11);
+//          test.right.left = new TreeNode(13);
+//          test.right.right= new TreeNode(4);
+//          test.left.left.left = new TreeNode(7);
+//          test.left.left.right = new TreeNode(2);
+//          test.right.right.left= new TreeNode(5);
+//          test.right.right.right= new TreeNode(1);
+//
+//          pathSum(test,22);
 
+//        System.out.println(combinationSum(new int []{2,3,6,7},7).toString());
 
+        //coin change 2
+        System.out.println(change2(10, new int[]{10}));
 
       }
 }

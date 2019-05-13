@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d124b1bf-0d0c-4663-b35d-68a2f066924c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/InterviewKit/leetcode$TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterviewKit/leetcode$TreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/InterviewKit/leetcode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/InterviewKit/leetcode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/InterviewKit/leetcodeTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/leetcode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leetcode.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,13 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/leetcode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="988" column="10" lean-forward="true" selection-start-line="988" selection-start-column="10" selection-end-line="1004" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#394#395#0" expanded="true" />
-                <element signature="e#426#427#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="1176" column="34" selection-start-line="1176" selection-start-column="34" selection-end-line="1176" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -92,9 +91,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1366" />
-    <option name="height" value="728" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="width" value="960" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -110,11 +109,11 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555195092179" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556263070971" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../fixing/contract-service/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../fixing/offer-service/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -266,18 +265,42 @@
       <workItem from="1555052748519" duration="3096000" />
       <workItem from="1555081353384" duration="15885000" />
       <workItem from="1555342971557" duration="2774000" />
-      <workItem from="1555856939160" duration="1535000" />
+      <workItem from="1555856939160" duration="5891000" />
+      <workItem from="1555925409696" duration="583000" />
+      <workItem from="1555931016897" duration="580000" />
+      <workItem from="1555989140213" duration="1222000" />
+      <workItem from="1556045866233" duration="5563000" />
+      <workItem from="1556264630664" duration="584000" />
+      <workItem from="1556267892972" duration="594000" />
+      <workItem from="1556274608976" duration="579000" />
+      <workItem from="1556277025640" duration="587000" />
+      <workItem from="1556508148248" duration="582000" />
+      <workItem from="1556515645648" duration="584000" />
+      <workItem from="1556613338114" duration="6715000" />
+      <workItem from="1556860373613" duration="3036000" />
+      <workItem from="1557119821175" duration="645000" />
+      <workItem from="1557123294252" duration="1012000" />
+      <workItem from="1557125105021" duration="1244000" />
+      <workItem from="1557214096374" duration="1187000" />
+      <workItem from="1557222391579" duration="580000" />
+      <workItem from="1557279693818" duration="4048000" />
+      <workItem from="1557295418785" duration="589000" />
+      <workItem from="1557304558787" duration="699000" />
+      <workItem from="1557367574036" duration="590000" />
+      <workItem from="1557376144212" duration="1127000" />
+      <workItem from="1557384094693" duration="592000" />
+      <workItem from="1557728398779" duration="1179000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="368058000" />
+    <option name="totallyTimeSpent" value="407115000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4987715" weight="0.52487963" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4987715" weight="0.52420574" />
       <window_info id="Structure" order="1" sideWeight="0.5012285" side_tool="true" weight="0.23071104" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -285,17 +308,17 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32843137" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4924357" weight="0.3496732" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49546143" visible="true" weight="0.39215687" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32792208" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49200428" visible="true" weight="0.3495671" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49413645" weight="0.25974026" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32843137" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4924357" visible="true" weight="0.33333334" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5075643" side_tool="true" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49016643" weight="0.3267974" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5079957" side_tool="true" weight="0.51797384" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32718122" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -322,51 +345,64 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>1113</line>
+          <line>1206</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>1115</line>
+          <line>1208</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>1116</line>
+          <line>1209</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>1130</line>
+          <line>1223</line>
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>1133</line>
+          <line>1226</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>1136</line>
+          <line>1229</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/leetcode.java</url>
-          <line>1137</line>
+          <line>1230</line>
           <properties />
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/leetcode.java</url>
+          <line>1260</line>
+          <properties />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/leetcodeTest.java" />
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_51/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="599" column="6" selection-start-line="599" selection-start-column="6" selection-end-line="599" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3043">
@@ -393,13 +429,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/leetcode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="988" column="10" lean-forward="true" selection-start-line="988" selection-start-column="10" selection-end-line="1004" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#426#427#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="1176" column="34" selection-start-line="1176" selection-start-column="34" selection-end-line="1176" selection-end-column="34" />
         </state>
       </provider>
     </entry>
