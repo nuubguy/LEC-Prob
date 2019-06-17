@@ -1082,14 +1082,14 @@ public class leetcode {
         }
     }
 
-    public static int change2(int amount, int[] coins) {
-          int [][]map = new int [coins.length+1][amount+1];
-          for(int x)
-          //recursion solved
-//        return change2Helper(amount,coins,0);
-
-
-    }
+//    public static int change2(int amount, int[] coins) {
+//          int [][]map = new int [coins.length+1][amount+1];
+//          for(int x)
+//          //recursion solved
+////        return change2Helper(amount,coins,0);
+//
+//
+//    }
 
     static int change2Helper(int amount, int[]coins,int index){
         int com =0;
@@ -1103,6 +1103,38 @@ public class leetcode {
             }
         }
         return com;
+    }
+
+//    static int findLongestChain(int[][] pairs) {
+//
+//    }
+//
+//    static int findLongestChainHelper(int [][]pairs,int indexPair, int firstCompareValue, int total){
+//
+//    }
+
+    static  List<Integer> majorityElement(int[] nums) {
+        int appear = nums.length/3;
+        HashMap<Integer,Integer>temp = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+
+        for(int x=0;x<nums.length;x++){
+            if (temp.get(nums[x])==null){
+                temp.put(nums[x],1);
+            }else if (temp.get(nums[x])!=null){
+                if (temp.get(nums[x])==-1){
+                    continue;
+                }else{
+                    temp.put(nums[x],temp.get(nums[x])+1);
+                }
+
+            }
+            if (temp.get(nums[x])>appear){
+                result.add(nums[x]);
+                temp.put(nums[x],-1);
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -1258,7 +1290,9 @@ public class leetcode {
 //        System.out.println(combinationSum(new int []{2,3,6,7},7).toString());
 
         //coin change 2
-        System.out.println(change2(10, new int[]{10}));
+//        System.out.println(change2(10, new int[]{10}));
+
+        majorityElement(new int[]{1,2});
 
       }
 }
